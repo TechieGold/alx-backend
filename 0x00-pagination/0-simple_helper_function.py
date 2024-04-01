@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """Contains a definition of index_page function."""
 
 from typing import Tuple
