@@ -3,16 +3,19 @@
 from flask import Flask, render_template, request
 from flask_babel import Babel, _
 
+
 class Config(object):
     """ Configuration for Babel"""
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
+
 app = Flask(__name__, template_folder='templates')
 app.config.from_object(Config)
 app.url_map.strict_slashes = False
 babel = Babel()
+
 
 @babel.localeselector
 def get_locale() -> str:
@@ -20,6 +23,7 @@ def get_locale() -> str:
     Select and return best language match based on supported languages.
     """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
+
 
 @app.route('/')
 def index() -> str:
